@@ -18,11 +18,23 @@ public final class SwiftEntryKit {
     /** Cannot be instantiated, customized, inherited. */
     private init() {}
     
-    /** Returns true if an entry is currently displayed.
-     Not thread safe - should be called from the main queue only in order to receive a reliable result.
+    /**
+     Returns true if an entry is currently displayed
+     - Not thread safe - should be called from the main queue only in order to receive a reliable result.
+     - A class method - Should be called on the class
      */
     public class var isCurrentlyDisplaying: Bool {
-        return EKAttributes.isDisplaying
+        return EKWindowProvider.shared.isCurrentlyDisplaying
+    }
+    
+    /**
+     Is SwiftEntryKit currently displaying an entry with a specific identifier
+     - Not thread safe - should be called from the main queue only in order to receive a reliable result.
+     - A class method - Should be called on the class
+     - parameter identifier: The id of the queried entry
+     */
+    public class func isCurrentlyDisplaying(entryWithId identifier: String) -> Bool {
+        return EKWindowProvider.shared.isCurrentlyDisplaying(entryWithId: identifier)
     }
     
     /**

@@ -26,7 +26,7 @@ class AttributesCreation: QuickSpec {
             var attributes: EKAttributes!
 
             beforeEach {
-                attributes = EKAttributes()
+                attributes = EKAttributes.attributes
             }
             
             it("is initialized with max display priority") {
@@ -80,7 +80,7 @@ class AttributesCreation: QuickSpec {
             var attributes: EKAttributes!
             
             beforeEach {
-                attributes = EKAttributes()
+                attributes = EKAttributes.attributes
             }
             
             it("is initialized as a top entry") {
@@ -109,7 +109,7 @@ class AttributesCreation: QuickSpec {
             var duration: EKAttributes.DisplayDuration!
             
             beforeEach {
-                attributes = EKAttributes()
+                attributes = EKAttributes.attributes
             }
             
             it("displays for infinate time") {
@@ -139,7 +139,7 @@ class AttributesCreation: QuickSpec {
             var windowLevel: EKAttributes.WindowLevel!
             
             beforeEach {
-                attributes = EKAttributes()
+                attributes = EKAttributes.attributes
             }
             
             it("is has a normal level") {

@@ -66,6 +66,16 @@ final class EKWindowProvider {
     
     // MARK: - Exposed Actions
     
+    /** Checks if any entry is currently being displayed */
+    var isCurrentlyDisplaying: Bool {
+        return rootVC?.lastAttributes != nil
+    }
+    
+    /** Checks if an entry with the identifier is currently being displayed */
+    func isCurrentlyDisplaying(entryWithId identifier: String) -> Bool {
+        return identifier == rootVC?.lastAttributes?.identifier
+    }
+    
     /** Transform current entry to view */
     func transform(to view: UIView) {
         entryView?.transform(to: view)

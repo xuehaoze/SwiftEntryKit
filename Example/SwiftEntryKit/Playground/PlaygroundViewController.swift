@@ -14,7 +14,7 @@ class PlaygroundViewController: UIViewController {
     private let tableView = UITableView()
     
     private lazy var attributesWrapper: EntryAttributeWrapper = {
-        var attributes = EKAttributes()
+        var attributes = EKAttributes.attributes
         attributes.positionConstraints = .fullWidth
         attributes.hapticFeedbackType = .success
         attributes.positionConstraints.safeArea = .empty(fillSafeArea: true)

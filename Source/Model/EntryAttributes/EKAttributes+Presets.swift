@@ -10,11 +10,11 @@ import Foundation
 public extension EKAttributes {
     
     /** Default attributes - Can be mutated according to the hosting application theme */
-    public static var `default` = EKAttributes()
+    public static var `default` = EKAttributes.attributes
     
     /** Toast preset - The frame fills margins and safe area is filled with background view */
     public static var toast: EKAttributes {
-        var attributes = EKAttributes()
+        var attributes = EKAttributes.attributes
         attributes.positionConstraints = .fullWidth
         attributes.positionConstraints.safeArea = .empty(fillSafeArea: true)
         attributes.windowLevel = .statusBar
@@ -25,7 +25,7 @@ public extension EKAttributes {
     
     /** Float preset - The frame is margined and the safe area is left cleared */
     public static var float: EKAttributes {
-        var attributes = EKAttributes()
+        var attributes = EKAttributes.attributes
         attributes.positionConstraints = .float
         attributes.roundCorners = .all(radius: 10)
         attributes.positionConstraints.safeArea = .empty(fillSafeArea: false)

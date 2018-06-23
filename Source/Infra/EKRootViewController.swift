@@ -8,11 +8,21 @@
 
 import UIKit
 
+// TODO: Use this class to access the attributes
+class EKAttributesProvider {
+    
+    private(set) var attributesByIdentifier: [String: EKAttributes] = [:]
+    private(set) var lastAttributes: EKAttributes!
+    
+}
+
 class EKRootViewController: UIViewController {
     
     // MARK: - Props
     
-    private var lastAttributes: EKAttributes!
+    private(set) var attributesByIdentifier: [String: EKAttributes] = [:]
+    private(set) var lastAttributes: EKAttributes!
+    
     private var tapGestureRecognizer: UITapGestureRecognizer!
     
     private let backgroundView = EKBackgroundView()
@@ -82,6 +92,7 @@ class EKRootViewController: UIViewController {
         removeLastEntry(lastAttributes: previousAttributes, keepWindow: true)
         
         lastAttributes = attributes
+        attributesByIdentifier[attributes.identifier] = attributes
         
         let entryContentView = EKContentView(withEntryDelegate: self)
         view.addSubview(entryContentView)

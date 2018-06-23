@@ -172,7 +172,7 @@ Do some customization on customView
 */
 
 // Attributes struct that describes the display, style, user interaction and animations of customView.
-var attributes = EKAttributes()
+var attributes = EKAttributes.attributes
 /*
 Adjust preferable attributes
 */
@@ -189,7 +189,7 @@ The kit will replace the application main window with the EKWindow instance and 
 
 Create a mutable EKAttributes structure likewise:
 ```Swift
-var attributes = EKAttributes()
+var attributes = EKAttributes.attributes
 ```
 
 Below are the properties that can be modified in the *EKAttributes*:
@@ -216,10 +216,10 @@ The display priority of the entry determines whether it dismisses other entries 
 An entry can be dismissed only by an entry with an equal or a higher display priority.
 
 ```Swift
-let highPriorityAttributes = EKAttributes()
+let highPriorityAttributes = EKAttributes.attributes
 highPriorityAttributes.displayPriority = .high
 
-let normalPriorityAttributes = EKAttributes()
+let normalPriorityAttributes = EKAttributes.attributes
 normalPriorityAttributes.displayPriority = .normal
 
 // Display high priority entry

@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 public struct EKAttributes {
-    
-    /** Init with default attributes */
-    public init() {}
+
+    /** Identifier of the instance that can be used in various cases */
+    public fileprivate(set) var identifier = ""
     
     // MARK: Display Attributes
     
@@ -81,4 +81,14 @@ public struct EKAttributes {
     
     /** Describes the previous entry behaviour when a new entry with higher display-priority shows */
     public var popBehavior = PopBehavior.animated(animation: .translation)
+        
+    /** Init with a given identifier and default attributes */
+    private init(withId identifier: String) {
+        self.identifier = identifier
+    }
+    
+    /** Generates and returns an identified EKAttributes instance */
+    public static var attributes: EKAttributes {
+        return EKAttributes(withId: nextIdentifier)
+    }
 }

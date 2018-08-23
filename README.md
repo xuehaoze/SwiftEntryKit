@@ -132,7 +132,7 @@ source 'https://github.com/cocoapods/specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'SwiftEntryKit', '0.5.6'
+pod 'SwiftEntryKit', '0.5.9'
 ```
 
 Then, run the following command:
@@ -155,7 +155,7 @@ $ brew install carthage
 To integrate SwiftEntryKit into your Xcode project using Carthage, specify the following in your `Cartfile`:
 
 ```ogdl
-github "huri000/SwiftEntryKit" == 0.5.6
+github "huri000/SwiftEntryKit" == 0.5.9
 ```
 
 ## Usage
@@ -329,7 +329,7 @@ This is very useful when you want to display an unintrusive content like banners
 attributes.screenInteraction = .forward
 ```
 
-Pass additional actions that are invokes when the user taps the entry:
+Pass additional actions that are invoked when the user taps the entry:
 ```Swift
 let action = {
     // Do something useful
@@ -621,7 +621,7 @@ You can dismiss an entry by simply invoke *dismiss* in the SwiftEntryKit class, 
 ```Swift
 SwiftEntryKit.dismiss()
 ```
-This dismisses the entry animatedly using its *exitAnimation* attribute and on comletion, the window would be removed as well.
+This dismisses the entry animatedly using its *exitAnimation* attribute and on completion, the window would be removed as well.
 
 #### Using a completion handler
 

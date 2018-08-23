@@ -29,6 +29,7 @@ public class EKSimpleMessageView: UIView {
             return
         }
         thumbImageView = UIImageView()
+        thumbImageView.clipsToBounds = true
         addSubview(thumbImageView)
         thumbImageView.imageContent = content
     }

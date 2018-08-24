@@ -41,7 +41,7 @@ public class FODAlertMessageView: EKSimpleMessageView {
             messageContentView.labelsOffset = 5
             
             if let thumbImageView = thumbImageView {
-                thumbImageView.layoutToSuperview(.top, offset: 20)
+                thumbImageView.layoutToSuperview(.top, offset: 0)
                 thumbImageView.layoutToSuperview(.centerX)
                 messageContentView.layout(.top, to: .bottom, of: thumbImageView)
             } else {

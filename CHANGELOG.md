@@ -1,6 +1,63 @@
 # Change Log
 Any notable changes to this project will be documented in this file.
 
+## 0.8.9
+
+### Features:
+
+#### #155 
+[Issue #155](https://github.com/huri000/SwiftEntryKit/issues/155) - Setting textfield cursor color for EKProperty.TextFieldContent.
+
+`TextFieldContent` receives `tintColor` from now on.
+
+#### #160
+[Issue #160](https://github.com/huri000/SwiftEntryKit/issues/160) - Animation with sequence of images
+
+From now on developers are able to sequence-animate and transform-animate every image within the presets using one of the designated public initializers available for `EKProperty.ImageContent`.
+
+## 0.8.8
+
+### Bug Fixes:
+
+#### #109
+[Issue #109](https://github.com/huri000/SwiftEntryKit/issues/109) - StatusBar appareance when moving to another UIViewController. Added another tatus bar type - `.ignored`. Using this ignores the status bar when the entry enters/exits the screen.
+
+#### #143
+[Issue #143](https://github.com/huri000/SwiftEntryKit/issues/143) - Orientation incorrect when set to .portraitUpsideDown on iPhone. 
+Changed `isRotationEnabled` to `Rotation` structure. 
+
+```Swift
+/** Rotation related position constraints */
+public struct Rotation {
+
+    /** Attributes of supported interface orientations */
+    public enum SupportedInterfaceOrientation {
+
+        /** Uses standard supported interface orientation (target specification in general settings) */
+        case standard
+
+        /** Supports all orinetations */
+        case all
+    }
+
+    /** Autorotate the entry along with the device orientation */
+    public var isEnabled: Bool
+
+    /** The screen autorotates with accordance to this option */
+    public var supportedInterfaceOrientations: SwiftEntryKit.EKAttributes.PositionConstraints.Rotation.SupportedInterfaceOrientation
+}
+```
+
+#### Button Bar Horizontal Distribution Threshold
+`EKProperty.ButtonBarContent` supports an upper horizontal threshold for its button distribution.
+`EKProperty.ButtonBarContent` has an `Int` property named `horizontalDistributionThreshold`. It must be positive.
+
+## 0.8.7
+
+### Bug Fixes:
+
+[Issue #117](https://github.com/huri000/SwiftEntryKit/issues/117) - Round buttons in alert.
+
 ## 0.8.6
 [Issue #121](https://github.com/huri000/SwiftEntryKit/issues/121) - Long title for alert buttons.
 

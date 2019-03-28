@@ -60,6 +60,22 @@ class PresetsViewController: UIViewController {
         SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
+    private func showAnimatingImageNote(attributes: EKAttributes) {
+        
+        // Set note label content
+        let text = "Up and charge"
+        let style = EKProperty.LabelStyle(font: MainFont.light.with(size: 14), color: .black, alignment: .center)
+        let labelContent = EKProperty.LabelContent(text: text, style: style)
+        let sequence = (0...5).map { "battery\($0)" }
+        let animationDuration: TimeInterval = 1
+        let animation = EKProperty.ImageContent.TransformAnimation.animate(duration: animationDuration, options: [.curveEaseInOut], transform: .init(scaleX: 1.1, y: 1.1))
+        let imageContent = EKProperty.ImageContent(imagesNames: sequence, imageSequenceAnimationDuration: animationDuration, animation: animation, size: CGSize(width: 16, height: 16), contentMode: .scaleAspectFit)
+        
+        let contentView = EKImageNoteMessageView(with: labelContent, imageContent: imageContent)
+        
+        SwiftEntryKit.display(entry: contentView, using: attributes)
+    }
+    
     // Bumps an infinite processing note
     private func showProcessingNote(attributes: EKAttributes) {
         let text = "Waiting for the goodies to arrive!"
@@ -131,7 +147,7 @@ class PresetsViewController: UIViewController {
             SwiftEntryKit.dismiss()
         }
     
-        let buttonsBarContent = EKProperty.ButtonBarContent(with: closeButton, okButton, separatorColor: EKColor.Gray.light, expandAnimatedly: true)
+        let buttonsBarContent = EKProperty.ButtonBarContent(with: closeButton, okButton, separatorColor: EKColor.Gray.light, horizontalDistributionThreshold: 1, expandAnimatedly: true)
         
         message = EKRatingMessage(initialTitle: initialTitle, initialDescription: initialDescription, ratingItems: items, buttonBarContent: buttonsBarContent) { index in
             // Rating selected - do something
@@ -286,6 +302,13 @@ class PresetsViewController: UIViewController {
         SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
+    // Bumps a navigation controller
+    private func showNavigationController(with attributes: EKAttributes) {
+        let viewController = ContactsViewController()
+        let navigationController = ExampleNavigationViewController(rootViewController: viewController)
+        SwiftEntryKit.display(entry: navigationController, using: attributes)
+    }
+    
     // Bumps a custom nib originated view
     private func showCustomNibView(attributes: EKAttributes) {
         SwiftEntryKit.display(entry: NibExampleView(), using: attributes)
@@ -342,6 +365,8 @@ extension PresetsViewController: UITableViewDelegate, UITableViewDataSource {
             formCellSelected(with: attributes, row: indexPath.row)
         case 5:
             customCellSelected(with: attributes, row: indexPath.row)
+        case 6:
+            showNavigationController(with: attributes)
         default:
             break
         }
@@ -410,8 +435,10 @@ extension PresetsViewController {
         case 2:
             showImageNote(attributes: attributes)
         case 3:
-            showStatusBarMessage(attributes: attributes)
+            showAnimatingImageNote(attributes: attributes)
         case 4:
+            showStatusBarMessage(attributes: attributes)
+        case 5:
             showNote(attributes: attributes)
         default:
             break
@@ -469,8 +496,10 @@ extension PresetsViewController {
     private func customCellSelected(with attributes: EKAttributes, row: Int) {
         switch row {
         case 0:
-            showCustomNibView(attributes: attributes)
+            showNavigationController(with: attributes)
         case 1:
+            showCustomNibView(attributes: attributes)
+        case 2:
             showCustomViewController(attributes: attributes)
         default:
             break

@@ -40,6 +40,7 @@ final public class EKPopUpMessageView: UIView {
             return
         }
         imageView = UIImageView()
+        imageView.clipsToBounds = true
         addSubview(imageView)
         imageView.layoutToSuperview(.centerX)
         switch themeImage.position {
